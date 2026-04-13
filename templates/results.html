@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Flights</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="page-shell">
+        <div class="card hero-card">
+            <div class="page-header">
+                <div>
+                    <h1>Available Flights</h1>
+                    <p class="subtitle">Select a flight to view seat availability and plane capacity.</p>
+                </div>
+            </div>
+
+            {% if flights %}
+                <div class="table-wrap">
+                    <table class="flight-table">
+                        <thead>
+                            <tr>
+                                <th>Flight Number</th>
+                                <th>Departure Date</th>
+                                <th>Origin</th>
+                                <th>Destination</th>
+                                <th>Departure Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for flight in flights %}
+                            <tr>
+                                <td>
+                                    <a class="flight-link"
+                                       href="{{ url_for('flight_details', flight_number=flight[0], departure_date=flight[1]) }}">
+                                        {{ flight[0] }}
+                                    </a>
+                                </td>
+                                <td>{{ flight[1] }}</td>
+                                <td>{{ flight[2] }}</td>
+                                <td>{{ flight[3] }}</td>
+                                <td>{{ flight[4] }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="empty-state">
+                    <h2>No flights found</h2>
+                    <p>Try a different airport pair or date range.</p>
+                </div>
+            {% endif %}
+            <br>
+            <div class="center-button">
+                <button onclick='window.location.href="{{ url_for("index") }}"' class="secondary-btn">New Search</button>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>

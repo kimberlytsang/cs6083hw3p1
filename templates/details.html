@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="page-shell">
+        <div class="card hero-card">
+            <div class="page-header">
+                <div>
+                    <h1>Flight Details</h1>
+                    <p class="subtitle">Capacity and available seats for the selected flight.</p>
+                </div>
+            </div>
+
+            {% if flight %}
+                <div class="detail-grid">
+                    <div class="detail-box">
+                        <span class="detail-label">Flight Number</span>
+                        <span class="detail-value">{{ flight[0] }}</span>
+                    </div>
+
+                    <div class="detail-box">
+                        <span class="detail-label">Departure Date</span>
+                        <span class="detail-value">{{ flight[1] }}</span>
+                    </div>
+
+                    <div class="detail-box">
+                        <span class="detail-label">Plane Capacity</span>
+                        <span class="detail-value">{{ flight[2] }}</span>
+                    </div>
+
+                    <div class="detail-box">
+                        <span class="detail-label">Available Seats</span>
+                        <span class="detail-value">{{ flight[3] }}</span>
+                    </div>
+                </div>
+            {% else %}
+                <div class="empty-state">
+                    <h2>No details found</h2>
+                    <p>The selected flight could not be loaded.</p>
+                </div>
+            {% endif %}
+            <br>
+            <!--Back to Results brings you back to the page of the list of available flights based on the information inputted in the homepage -->
+            <div class="button-row">
+                <button onclick="window.history.back()" class="secondary-btn">← Back to Results</button>
+                
+                <button onclick="window.location.href='{{ url_for('index') }}'" class="secondary-btn">New Search</button>
+</div>
+        </div>
+    </div>
+</body>
+</html>
