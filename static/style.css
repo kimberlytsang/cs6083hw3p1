@@ -108,7 +108,7 @@ input {
 
 .button-row {
     display: flex;
-    justify-content: center;    /* center horizontally */
+    justify-content: center;    /* center horizontally (to make it in the middle of the page) */
     gap: 250px;     /* space between buttons */
     margin-top: 20px;
 }
@@ -118,7 +118,6 @@ input {
     opacity: 0.9;
 }
 
-/* 🔥 TABLE FIXES (spacing + readability) */
 .table-wrap {
     overflow-x: auto;
 }
@@ -158,13 +157,11 @@ input {
     text-decoration: underline;
 }
 
-/* empty state */
 .empty-state {
     text-align: center;
     padding: 30px;
 }
 
-/* details page layout */
 .detail-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
