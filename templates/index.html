@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Search</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="page-shell">
+        <div class="card hero-card">
+            <h1>Flight Search</h1>
+            <p class="subtitle">Search flights by airport codes and departure date range.</p>
+
+            <form action="/search" method="post" class="search-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="source">Source Airport Code</label>
+                        <input type="text" id="source" name="source" placeholder="JFK" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dest">Destination Airport Code</label>
+                        <input type="text" id="dest" name="dest" placeholder="LAX" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="start_date">Start Date</label>
+                        <input type="date" id="start_date" name="start_date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="end_date">End Date</label>
+                        <input type="date" id="end_date" name="end_date" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="primary-btn">Search Flights</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
